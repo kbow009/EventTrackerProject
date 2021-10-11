@@ -8,80 +8,86 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity
 public class Wellness {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String activity;
-	
-	@Column(name="time_in_mintues")
-	private int timeInMinutes;
-	
-	@Column(name="time_hours")
-	private int timeInHours;
-	
-	@Column(name="image_url")
+
+	@Column(name = "self_care_minutes")
+	private Integer durMins;
+
+	@Column(name = "self_care_hours")
+	private Integer durHours;
+
+	@Column(name = "image_url")
 	private String imageUrl;
-	
-	@Column(name="video_url")
+
+	@Column(name = "video_url")
 	private String videoUrl;
-	
+
 	private String notes;
-	
-	@Column(name="mood_before")
+
+	@Column(name = "mood_before")
 	private String moodBefore;
-	
-	@Column(name="mood_after")
+
+	@Column(name = "mood_after")
 	private String moodAfter;
-	
-	@Column(name="activity_day")
-	private int activityDay;
-	
-	@Column(name="activity_month")
-	private int activityMonth;
-	
-	@Column(name="activity_year")
-	private int activityYear;
-	
-	
-	
+
+	@Column(name = "activity_day")
+	private Integer activityDay;
+
+	@Column(name = "activity_month")
+	private Integer activityMonth;
+
+	@Column(name = "activity_year")
+	private Integer activityYear;
+
 	public Wellness() {
 		super();
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Wellness [id=" + id + ", activity=" + activity + ", durMins=" + durMins + ", durHours=" + durHours
+				+ ", imageUrl=" + imageUrl + ", videoUrl=" + videoUrl + ", notes=" + notes + ", moodBefore="
+				+ moodBefore + ", moodAfter=" + moodAfter + ", activityDay=" + activityDay + ", activityMonth="
+				+ activityMonth + ", activityYear=" + activityYear + "]";
+	}
+
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getActivity() {
 		return activity;
 	}
-	
+
 	public void setActivity(String activity) {
 		this.activity = activity;
 	}
-	public int getTimeInMinutes() {
-		return timeInMinutes;
+
+	public int getDurMins() {
+		return durMins;
 	}
 
-	public void setTimeInMinutes(int timeInMinutes) {
-		this.timeInMinutes = timeInMinutes;
+	public void setDurMins(int durMins) {
+		this.durMins = durMins;
 	}
 
-	public int getTimeInHours() {
-		return timeInHours;
+	public int getDurHours() {
+		return durHours;
 	}
 
-	public void setTimeInHours(int timeInHours) {
-		this.timeInHours = timeInHours;
+	public void setDurHours(int durHours) {
+		this.durHours = durHours;
 	}
 
 	public String getImageUrl() {
@@ -148,18 +154,10 @@ public class Wellness {
 		this.activityYear = activityYear;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Wellness [id=" + id + ", activity=" + activity + ", timeInMinutes=" + timeInMinutes + ", timeInHours="
-				+ timeInHours + ", imageUrl=" + imageUrl + ", videoUrl=" + videoUrl + ", notes=" + notes
-				+ ", moodBefore=" + moodBefore + ", moodAfter=" + moodAfter + ", activityDay=" + activityDay
-				+ ", activityMonth=" + activityMonth + ", activityYear=" + activityYear + "]";
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(activity, activityDay, activityMonth, activityYear, durHours, durMins, id, imageUrl,
+				moodAfter, moodBefore, notes, videoUrl);
 	}
 
 	@Override
@@ -171,7 +169,11 @@ public class Wellness {
 		if (getClass() != obj.getClass())
 			return false;
 		Wellness other = (Wellness) obj;
-		return id == other.id;
+		return Objects.equals(activity, other.activity) && activityDay == other.activityDay
+				&& activityMonth == other.activityMonth && activityYear == other.activityYear
+				&& durHours == other.durHours && durMins == other.durMins && id == other.id
+				&& Objects.equals(imageUrl, other.imageUrl) && Objects.equals(moodAfter, other.moodAfter)
+				&& Objects.equals(moodBefore, other.moodBefore) && Objects.equals(notes, other.notes)
+				&& Objects.equals(videoUrl, other.videoUrl);
 	}
-	
 }
