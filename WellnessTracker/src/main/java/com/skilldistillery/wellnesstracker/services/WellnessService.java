@@ -1,12 +1,15 @@
 package com.skilldistillery.wellnesstracker.services;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.wellnesstracker.entities.Wellness;
-
+@Service
 public interface WellnessService {
 
-	public List<Wellness> getAllWellness();
+	public List<Wellness> index();
 
 //	List<Wellness> searchByActivity(String activity);
 
@@ -16,5 +19,5 @@ public interface WellnessService {
 
 	public boolean deleteById(Integer id);
 
-	Wellness findById(Integer id);
+	Optional<Wellness> findById(int id);
 }

@@ -1,6 +1,7 @@
 package com.skilldistillery.wellnesstracker.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +13,11 @@ import com.skilldistillery.wellnesstracker.repositories.WellnessRepository;
 public class WellnessServiceImpl implements WellnessService {
 
 	@Autowired
-	private WellnessRepository wellRepo;
+    WellnessRepository wellnessRepo;
 
 	@Override
-	public List<Wellness> getAllWellness() {
-		return wellRepo.findAll();
+	public List<Wellness> index() {
+		return wellnessRepo.findAll();
 	}
 
 //	@Override
@@ -27,21 +28,21 @@ public class WellnessServiceImpl implements WellnessService {
 	@Override
 	public Wellness save(Wellness wellness) {
 
-		return wellRepo.save(wellness);
+		return wellnessRepo.save(wellness);
 	}
 
 	@Override
 	public Wellness saveAndFlush(Integer id, Wellness wellness) {
 
-		return wellRepo.saveAndFlush(wellness);
+		return wellnessRepo.saveAndFlush(wellness);
 	}
 
 	@Override
 	public boolean deleteById(Integer id) {
 		boolean deleted = false;
-		Wellness wellness = wellRepo.getById(id);
+		Wellness wellness = wellnessRepo.getById(id);
 		if (wellness != null) {
-			wellRepo.delete(wellness);
+			wellnessRepo.delete(wellness);
 			deleted = true;
 		}
 		return deleted;
@@ -49,8 +50,8 @@ public class WellnessServiceImpl implements WellnessService {
 	}
 
 	@Override
-	public Wellness findById(Integer id) {
-		return wellRepo.getById(id);
+	public Optional<Wellness> findById(int id) {
+		return wellnessRepo.findById(id);
 	}
 
 }

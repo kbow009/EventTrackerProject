@@ -24,15 +24,10 @@ CREATE TABLE IF NOT EXISTS `wellness` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `activity` VARCHAR(45) NOT NULL,
   `self_care_minutes` INT NULL,
-  `self_care_hours` INT NULL,
-  `image_url` VARCHAR(100) NULL,
-  `video_url` VARCHAR(100) NULL,
   `notes` VARCHAR(500) NULL,
   `mood_before` VARCHAR(45) NULL,
   `mood_after` VARCHAR(45) NULL,
-  `activity_day` INT NULL,
-  `activity_month` INT NULL,
-  `activity_year` INT NULL,
+  `date` DATE NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -52,9 +47,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `wellnessdb`;
-INSERT INTO `wellness` (`id`, `activity`, `self_care_minutes`, `self_care_hours`, `image_url`, `video_url`, `notes`, `mood_before`, `mood_after`, `activity_day`, `activity_month`, `activity_year`) VALUES (1, 'Meditation', 20, NULL, NULL, NULL, NULL, NULL, NULL, 10, 9, 2021);
-INSERT INTO `wellness` (`id`, `activity`, `self_care_minutes`, `self_care_hours`, `image_url`, `video_url`, `notes`, `mood_before`, `mood_after`, `activity_day`, `activity_month`, `activity_year`) VALUES (2, 'Hiking', 5, 2, NULL, NULL, NULL, 'blah', 'clear', 12, 9, 2021);
-INSERT INTO `wellness` (`id`, `activity`, `self_care_minutes`, `self_care_hours`, `image_url`, `video_url`, `notes`, `mood_before`, `mood_after`, `activity_day`, `activity_month`, `activity_year`) VALUES (3, 'Reading', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `wellness` (`id`, `activity`, `self_care_minutes`, `notes`, `mood_before`, `mood_after`, `date`) VALUES (1, 'Meditation', 20, NULL, NULL, NULL, '2021-10-03');
+INSERT INTO `wellness` (`id`, `activity`, `self_care_minutes`, `notes`, `mood_before`, `mood_after`, `date`) VALUES (2, 'Hiking', 5, NULL, 'blah', 'clear', '2021-10-01');
+INSERT INTO `wellness` (`id`, `activity`, `self_care_minutes`, `notes`, `mood_before`, `mood_after`, `date`) VALUES (3, 'Reading', 40, NULL, NULL, NULL, '2021-10-05');
 
 COMMIT;
 

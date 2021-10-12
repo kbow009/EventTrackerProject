@@ -1,6 +1,7 @@
 package com.skilldistillery.wellnesstracker.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,14 +26,14 @@ public class WellnessController {
 	@Autowired
 	private WellnessService wellSvc;
 
-	@GetMapping("wellnesses")
-	public List<Wellness> findAll() {
-		return wellSvc.getAllWellness();
+	@GetMapping("wellness")
+	public List<Wellness> index(){
+		return wellSvc.index();
 	}
 
 	@GetMapping("wellness/{id}")
-	public Wellness showById(@PathVariable Integer id, HttpServletResponse res) {
-		Wellness wellness = wellSvc.findById(id);
+	public Optional<Wellness> showById(@PathVariable Integer id, HttpServletResponse res) {
+		Optional<Wellness> wellness = wellSvc.findById(id);
 		if (wellness == null) {
 			res.setStatus(404);
 		}
@@ -64,8 +65,8 @@ public class WellnessController {
 			}
 		} catch (Exception e) {
 			System.err.println(e);
-			res.setStatus(400);
 			wellness = null;
+			res.setStatus(400);
 		}
 		return wellness;
 	}
