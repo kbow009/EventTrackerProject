@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Wellness Tracker</title>
+<script src="js/script.js"></script>
+</head>
+<body>
+<h1>Wellness</h1>
+<hr>
+<!-- <form name="wellForm">
+    <input type="number" name="wellnessId">
+    <button name="getWellness">Get by Id</button>
+</form> -->
+<div id="output">
+    <div id="wellData"></div>
+   
+</div>
+<form name="addWellForm">
+    <input type="text" name="activity" placeholder="Activity Title"> <br>
+    <br> <input type="number" name="minutes" placeholder="Minutes">
+    <br> <input type="text" name="moodBefore" placeholder="Mood Before"> 
+    <br> <input type="text" name="moodAfter" placeholder="Mood After"> 
+    <br> <input type="date" name="date" placeholder="YYYY-MM-DD"> 
+
+    <textarea rows="3" cols="40" name="notes"
+        placeholder="Description"></textarea>
+    <button name="postNewWellness">Add Activity</button>
+    
+
+</form>
+</body>
+</html>
